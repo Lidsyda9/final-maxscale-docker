@@ -1,14 +1,17 @@
-Introduction
+--Introduction
+
 This app sets up sharding with two MariaDB servers using MaxScale and Docker Compose. The master1 database is populated with shard1.sql, and the master2 database is populated with shard2.sql. Additionally, a Python script is provided which connects, queries, and demonstrates the merged database.
 Building
 Build the containers:
 sudo docker-compose build
  
-Running
+--Running
+
 Run the 3 Docker containers:
 sudo docker-compose up -d
  
-Configuration
+--Configuration
+
 Three services are launched: one containing the master1 MariaDB database, another containing the master2 MariaDB database, and the third containing a MaxScale instance.
 The MaxScale database username is maxscale, and the password is shard.
 You can access the sharded database via MaxScale as follows:
