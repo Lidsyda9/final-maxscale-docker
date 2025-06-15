@@ -13,7 +13,6 @@ sudo docker-compose build
 ## Running
 Run the 3 Docker containers:
 
->
 sudo docker-compose up -d
  
 ## Configuration
