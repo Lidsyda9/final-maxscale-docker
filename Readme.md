@@ -37,7 +37,7 @@ To access the **master2** database as **root**, use password **root**:
 
 > mysql -u root -h localhost -P 3308 -p
 
-> To access the sharded database via MaxScale, use password **shard** and username **maxscale**:
+To access the sharded database via MaxScale, use password **shard** and username **maxscale**:
 
 > mysql -h localhost -P 4000 -u maxscale -p
 
