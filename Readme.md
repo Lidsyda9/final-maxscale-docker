@@ -13,7 +13,7 @@ sudo docker-compose build
 ## Running
 Run the 3 Docker containers:
 
-'''sql
+>
 sudo docker-compose up -d
  
 ## Configuration
