@@ -8,7 +8,7 @@ This app sets up sharding with two MariaDB servers using MaxScale and Docker Com
 * Build the containers:
 
 
-sudo docker-compose build
+> sudo docker-compose build
 
 
 
