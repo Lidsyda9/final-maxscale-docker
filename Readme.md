@@ -1,3 +1,5 @@
+# Database Shard Github
+______________________________________________________
 
 # Introduction
 This app sets up sharding with two MariaDB servers using MaxScale and Docker Compose. The master1 database is populated with shard1.sql, and the master2 database is populated with shard2.sql. Additionally, a Python script is provided which connects, queries, and demonstrates the merged database.
