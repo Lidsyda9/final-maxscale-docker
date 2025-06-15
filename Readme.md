@@ -22,10 +22,10 @@ You can access the sharded database via MaxScale as follows:
 
 > mysql -h localhost -P 4000 -u maxscale -p
  
-Use the password shard when prompted.
+Use the password ***shard*** when prompted.
 
 ## Max scale Docker-Compose Setup
-To access the master1 database as root, use password root:
+To access the ***master1*** database as ***root***, use password ***root***:
 
 > mysql -u root -h localhost -P 3307 -p
 
