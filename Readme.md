@@ -30,7 +30,7 @@ To access the ***master1*** database as ***root***, use password ***root***:
 > mysql -u root -h localhost -P 3307 -p
 
  
-To access the master2 database as root, use password root:
+To access the #master2# database as #root#, use password #root#:
 
 > mysql -u root -h localhost -P 3308 -p
 
