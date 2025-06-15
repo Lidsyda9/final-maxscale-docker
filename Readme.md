@@ -24,19 +24,19 @@ mysql -h localhost -P 4000 -u maxscale -p
 Use the password shard when prompted.
 
 ## Max scale Docker-Compose Setup
-* To access the master1 database as root, use password root:
+> To access the master1 database as root, use password root:
 
 mysql -u root -h localhost -P 3307 -p
  
-To access the master2 database as root, use password root:
+> To access the master2 database as root, use password root:
 
 mysql -u root -h localhost -P 3308 -p
  
-To access the sharded database via MaxScale, use password shard and username maxscale:
+> To access the sharded database via MaxScale, use password shard and username maxscale:
 
 mysql -h localhost -P 4000 -u maxscale -p
  
-To access the instances, you can run the following commands:
+> To access the instances, you can run the following commands:
 
 sudo docker exec -it maxscale-docker_master1_1 bash
 sudo docker exec -it maxscale-docker_master2_1 bash
