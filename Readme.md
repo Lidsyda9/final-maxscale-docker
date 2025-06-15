@@ -20,22 +20,22 @@ Run the 3 Docker containers:
 The MaxScale database username is maxscale, and the password is shard.
 You can access the sharded database via MaxScale as follows:
 
-mysql -h localhost -P 4000 -u maxscale -p
+> mysql -h localhost -P 4000 -u maxscale -p
  
 Use the password shard when prompted.
 
 ## Max scale Docker-Compose Setup
 * To access the master1 database as root, use password root:
 
-mysql -u root -h localhost -P 3307 -p
+> mysql -u root -h localhost -P 3307 -p
  
 * To access the master2 database as root, use password root:
 
-mysql -u root -h localhost -P 3308 -p
+> mysql -u root -h localhost -P 3308 -p
  
 * To access the sharded database via MaxScale, use password shard and username maxscale:
 
-mysql -h localhost -P 4000 -u maxscale -p
+> mysql -h localhost -P 4000 -u maxscale -p
  
 * To access the instances, you can run the following commands:
 
@@ -45,13 +45,13 @@ sudo docker exec -it maxscale-docker_maxscale_1 bash
  
 ## Script
 
-pip install -r requirements.txt
+> pip install -r requirements.txt
  
-To run the script, ensure that the Docker Compose is running:
+* To run the script, ensure that the Docker Compose is running:
 
-python3 script.py
+> python3 script.py
  
 ## To Delete the docker containers, and volumes created
 
 
-docker-compose down --volumes --remove-orphans
+> docker-compose down --volumes --remove-orphans
