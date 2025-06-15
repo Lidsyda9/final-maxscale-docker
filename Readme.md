@@ -28,6 +28,7 @@ Use the password shard when prompted.
 To access the master1 database as root, use password root:
 
 > mysql -u root -h localhost -P 3307 -p
+
  
 To access the master2 database as root, use password root:
 
@@ -36,6 +37,7 @@ To access the master2 database as root, use password root:
 > To access the sharded database via MaxScale, use password shard and username maxscale:
 
 > mysql -h localhost -P 4000 -u maxscale -p
+
  
  To access the instances, you can run the following commands:
 
@@ -46,6 +48,7 @@ sudo docker exec -it maxscale-docker_maxscale_1 bash
 ## Script
 
 > pip install -r requirements.txt
+
  
  To run the script, ensure that the Docker Compose is running:
 
