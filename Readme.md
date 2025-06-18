@@ -2,7 +2,7 @@
 
 # MariaDB MaxScale Docker image
 
-This Docker image runs MariaDB MaxScale. Two image variants can be built:
+
 
 
 # Database Shard Github
