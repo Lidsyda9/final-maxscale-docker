@@ -1,3 +1,10 @@
+![logo](https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo_blue-transparent.png)
+
+# MariaDB MaxScale Docker image
+
+This Docker image runs MariaDB MaxScale. Two image variants can be built:
+
+
 # Database Shard Github
 ______________________________________________________
 
