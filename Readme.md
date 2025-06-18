@@ -51,7 +51,9 @@ To access the sharded database via MaxScale, use password **shard** and username
  To access the instances, you can run the following commands:
 
 `sudo docker exec -it maxscale-docker_master1_1 bash`
+```
 `sudo docker exec -it maxscale-docker_master2_1 bash`
+```
 `sudo docker exec -it maxscale-docker_maxscale_1 bash`
  
 ## Script
