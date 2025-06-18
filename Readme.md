@@ -68,4 +68,4 @@ sudo docker exec -it maxscale-docker_master2_1 bash
 ## To Delete the docker containers, and volumes created
 
 
-> docker-compose down --volumes --remove-orphans
+```docker-compose down --volumes --remove-orphans```
