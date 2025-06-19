@@ -16,9 +16,6 @@ This app sets up sharding with two MariaDB servers using MaxScale and Docker Com
 
 `sudo docker-compose build`
 
-
-
-
 ## Running
 Run the 3 Docker containers:
 `sudo docker-compose up -d`
@@ -37,37 +34,6 @@ docker-compose up -d --build
 to stop the containers:
 
 `docker-compose down`
-
- 
-## Configuration
-The [default configuration](maxscale/maxscale.cnf) for the container is minimal
-and only enables the REST API.
-
-`example.cnf` (MaxScale config)
-Located in `maxscale/maxscale.cnf.d/example.cnf`, it defines:
-
-Two monitors for `master1` and `master2`
-
-Two services and listeners (on ports `4006` and `4007`)
-
-Mapped servers with internal Docker service names:
-
-* `master1` → `shard1-node1`
-
-* `master2` → `shard2-node1`
-
-```
-### 🔌 Ports
-
-| Container | Internal Port | Host Port |
-|-----------|----------------|-----------|
-| master1   | 3306           | 3307      |
-| master2   | 3306           | 3308      |
-| maxscale  | 4006           | 4006      |
-| maxscale  | 4007           | 4007      |
-
-```
-
 
 ## Max scale Docker-Compose Setup
 To access the ***master1*** database as ***root***, use password ***root***:
@@ -103,41 +69,7 @@ sudo docker exec -it maxscale-docker_master2_1 bash
  
 ## To Delete the docker containers, and volumes created
 
-
 ```docker-compose down --volumes --remove-orphans```
-
-⚙️ MaxScale Configuration – example.cnf
-This project uses a custom MaxScale configuration file located at:
-
-```
-final-maxscale-docker/
-└── maxscale/
-    ├── Dockerfile
-    └── maxscale.cnf.d/
-        └── example.cnf
-```
-
-```
-maxscale/maxscale.cnf.d/example.cnf
-```
-✅ Important: This file is used instead of the default maxscale.cnf in the root directory.
-
-🧩 Configuration Details
-The example.cnf file is configured for a sharding setup, replacing the default master-slave architecture. It defines two separate master shards and connects MaxScale to each using a dedicated monitor, service, and listener:
-
-```
-### 🧩 Shards Setup
-
-| Shard   | Server Name | Listener Port |
-|---------|-------------|----------------|
-| Shard 1 | master1     | 4006           |
-| Shard 2 | master2     | 4007           |
-
-```
-
-✅ Key Sections in example.cnf
-
-
 
 # Final-docker-compose-YML on Lubuntu
 Objective
@@ -237,6 +169,63 @@ MariaDB Docker Hub
 🧑‍💻 Author
 Created by Lidsyda
 GitHub: github.com/Lidsyda9
+
+
+⚙️ MaxScale Configuration – example.cnf
+This project uses a custom MaxScale configuration file located at:
+
+```
+final-maxscale-docker/
+└── maxscale/
+    ├── Dockerfile
+    └── maxscale.cnf.d/
+        └── example.cnf
+```
+
+```
+maxscale/maxscale.cnf.d/example.cnf
+```
+✅ Important: This file is used instead of the default maxscale.cnf in the root directory.
+
+🧩 Configuration Details
+The example.cnf file is configured for a sharding setup, replacing the default master-slave architecture. It defines two separate master shards and connects MaxScale to each using a dedicated monitor, service, and listener:
+
+```
+### 🧩 Shards Setup
+
+| Shard   | Server Name | Listener Port |
+|---------|-------------|----------------|
+| Shard 1 | master1     | 4006           |
+| Shard 2 | master2     | 4007           |
+
+```
+
+✅ Key Sections in example.cnf
+
+`example.cnf` (MaxScale config)
+Located in `maxscale/maxscale.cnf.d/example.cnf`, it defines:
+
+Two monitors for `master1` and `master2`
+
+Two services and listeners (on ports `4006` and `4007`)
+
+Mapped servers with internal Docker service names:
+
+* `master1` → `shard1-node1`
+
+* `master2` → `shard2-node1`
+
+```
+### 🔌 Ports
+
+| Container | Internal Port | Host Port |
+|-----------|----------------|-----------|
+| master1   | 3306           | 3307      |
+| master2   | 3306           | 3308      |
+| maxscale  | 4006           | 4006      |
+| maxscale  | 4007           | 4007      |
+
+
 
 
 
