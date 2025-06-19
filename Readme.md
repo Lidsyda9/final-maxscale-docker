@@ -21,6 +21,14 @@ This app sets up sharding with two MariaDB servers using MaxScale and Docker Com
 
 ## Running
 Run the 3 Docker containers:
+`sudo docker-compose up -d`
+
+# Configuration
+Three services are launched: one containing the `master1` MariaDB database, another containing the `master2` MariaDB database, and the third containing a MaxScale instance.
+The MaxScale database username is `maxscale`, and the password is `shard`.
+You can access the sharded database via MaxScale as follows:
+`mysql -h localhost -P 4000 -u maxscale -p`
+
 ```
 git clone https://github.com/Lidsyda9/final-maxscale-docker.git
 cd final-maxscale-docker
