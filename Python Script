@@ -1,0 +1,50 @@
+# Name: Lidsyda Npc
+# Email: lidsyda9@gmail.com
+# Date: June 19, 2025
+# Class: BAS Application Development Engineering
+# Description:
+# This Python script connects to a MaxScale instance and runs queries on a MariaDB shard to:
+# - Find the largest zipcode in zipcodes_one
+# - Find all zipcodes in Kentucky (KY)
+# - Find all zipcodes between 40000 and 41000
+# - Get the TotalWages column where the state is Pennsylvania (PA)
+
+import mysql.connector
+
+# Connect to MaxScale listener (adjust host/port if needed)
+conn = mysql.connector.connect(
+    host='127.0.0.1',  # or 'localhost' or the Docker IP of maxscale
+    port=4006,         # port to Shard1
+    user='maxscale',
+    password='maxscale_password',
+    database='your_database_name'  # Replace with your actual DB name
+)
+
+cursor = conn.cursor()
+
+# 1. Largest zipcode in zipcodes_one
+print("1. Largest zipcode in zipcodes_one:")
+cursor.execute("SELECT MAX(zipcode) FROM zipcodes_one;")
+print(cursor.fetchone()[0])
+
+# 2. All zipcodes where state = 'KY'
+print("\n2. All zipcodes where state = 'KY':")
+cursor.execute("SELECT * FROM zipcodes_one WHERE state = 'KY';")
+for row in cursor.fetchall():
+    print(row)
+
+# 3. All zipcodes between 40000 and 41000
+print("\n3. All zipcodes between 40000 and 41000:")
+cursor.execute("SELECT * FROM zipcodes_one WHERE zipcode BETWEEN 40000 AND 41000;")
+for row in cursor.fetchall():
+    print(row)
+
+# 4. TotalWages where state = 'PA'
+print("\n4. TotalWages where state = 'PA':")
+cursor.execute("SELECT TotalWages FROM zipcodes_one WHERE state = 'PA';")
+for row in cursor.fetchall():
+    print(row)
+
+# Clean up
+cursor.close()
+conn.close()
