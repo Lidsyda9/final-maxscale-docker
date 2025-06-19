@@ -1,7 +1,40 @@
-[maxscale]
-admin_secure_gui=false
-threads=1
+touch maxscale.cnf
 
-# this enables external access to the REST API outside of localhost
-# please review / modify for any public / non development environments
-admin_host=0.0.0.0
+[maxscale]
+threads=auto
+
+# Servers
+[server1]
+type=server
+address=master1
+port=3306
+protocol=MariaDBBackend
+
+[server2]
+type=server
+address=master2
+port=3306
+protocol=MariaDBBackend
+
+# Monitor
+[MySQL Monitor]
+type=monitor
+module=mariadbmon
+servers=server1,server2
+user=maxscale
+password=maxscale123
+
+# Read/Write Service
+[Read-Write Service]
+type=service
+router=readwritesplit
+servers=server1,server2
+user=maxscale
+password=maxscale123
+
+# Listener
+[Read-Write Listener]
+type=listener
+service=Read-Write Service
+protocol=MariaDBClient
+port=4000
