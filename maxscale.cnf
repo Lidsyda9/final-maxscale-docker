@@ -1,40 +1,66 @@
-touch maxscale.cnf
-
 [maxscale]
 threads=auto
 
-# Servers
-[server1]
-type=server
-address=master1
-port=3306
-protocol=MariaDBBackend
-
-[server2]
-type=server
-address=master2
-port=3306
-protocol=MariaDBBackend
-
-# Monitor
-[MySQL Monitor]
+# Monitor for Shard 1
+[Shard1-Monitor]
 type=monitor
 module=mariadbmon
-servers=server1,server2
+servers=shard1-node1
 user=maxscale
-password=maxscale123
+password=maxscale_password
+monitor_interval=2000
 
-# Read/Write Service
-[Read-Write Service]
+# Monitor for Shard 2
+[Shard2-Monitor]
+type=monitor
+module=mariadbmon
+servers=shard2-node1
+user=maxscale
+password=maxscale_password
+monitor_interval=2000
+
+# Server for Shard 1
+[shard1-node1]
+type=server
+address=master1         # must match service name in docker-compose.yml
+port=3306
+protocol=MariaDBBackend
+
+# Server for Shard 2
+[shard2-node1]
+type=server
+address=master2         # must match service name in docker-compose.yml
+port=3306
+protocol=MariaDBBackend
+
+# Service for Shard 1
+[Shard1-Service]
 type=service
-router=readwritesplit
-servers=server1,server2
+router=readconnroute
+router_options=master
+servers=shard1-node1
 user=maxscale
-password=maxscale123
+password=maxscale_password
 
-# Listener
-[Read-Write Listener]
+# Service for Shard 2
+[Shard2-Service]
+type=service
+router=readconnroute
+router_options=master
+servers=shard2-node1
+user=maxscale
+password=maxscale_password
+
+# Listener for Shard 1
+[Shard1-Listener]
 type=listener
-service=Read-Write Service
+service=Shard1-Service
 protocol=MariaDBClient
-port=4000
+port=4006
+
+# Listener for Shard 2
+[Shard2-Listener]
+type=listener
+service=Shard2-Service
+protocol=MariaDBClient
+port=4007
