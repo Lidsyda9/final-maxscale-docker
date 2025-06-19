@@ -21,12 +21,11 @@ This app sets up sharding with two MariaDB servers using MaxScale and Docker Com
 
 ## Running
 Run the 3 Docker containers:
-
-`git clone https://github.com/Lidsyda9/final-maxscale-docker.git
-
+```
+git clone https://github.com/Lidsyda9/final-maxscale-docker.git
 cd final-maxscale-docker
-
-docker-compose up -d --build`
+docker-compose up -d --build
+```
  
 ## Configuration
 * Three services are launched: one containing the **master1** MariaDB database, another containing the **master2** MariaDB database, and the third containing a MaxScale instance.
