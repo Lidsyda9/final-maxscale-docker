@@ -1,5 +1,5 @@
 version: '3.8'
- 
+
 services:
   master1:
     image: mariadb
@@ -12,7 +12,7 @@ services:
       - ./maxscale.sql:/docker-entrypoint-initdb.d/maxscale.sql
     ports:
       - "3307:3306"
- 
+
   master2:
     image: mariadb
     restart: always
@@ -24,7 +24,7 @@ services:
       - ./maxscale.sql:/docker-entrypoint-initdb.d/maxscale.sql
     ports:
       - "3308:3306"
- 
+
   maxscale:
     build:
       context: ./maxscale
@@ -33,10 +33,12 @@ services:
     ports:
       - "8989:8989"
       - "4000:4000"
+      - "4006:4006"
+      - "4007:4007"
     depends_on:
       - master1
       - master2
- 
+
 volumes:
   master1_data:
   master2_data:
