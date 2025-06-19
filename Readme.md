@@ -98,6 +98,31 @@ sudo docker exec -it maxscale-docker_master2_1 bash
 
 ```docker-compose down --volumes --remove-orphans```
 
+⚙️ MaxScale Configuration – example.cnf
+This project uses a custom MaxScale configuration file located at:
+
+```
+maxscale/maxscale.cnf.d/example.cnf
+```
+✅ Important: This file is used instead of the default maxscale.cnf in the root directory.
+
+🧩 Configuration Details
+The example.cnf file is configured for a sharding setup, replacing the default master-slave architecture. It defines two separate master shards and connects MaxScale to each using a dedicated monitor, service, and listener:
+
+```
+### 🧩 Shards Setup
+
+| Shard   | Server Name | Listener Port |
+|---------|-------------|----------------|
+| Shard 1 | master1     | 4006           |
+| Shard 2 | master2     | 4007           |
+
+```
+
+✅ Key Sections in example.cnf
+
+
+
 # Final-docker-compose-YML on Lubuntu
 Objective
 The purpose of this repo is to test out Docker on Lubuntu. This project demonstrates a docker environment with:
