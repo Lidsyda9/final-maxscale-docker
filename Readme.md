@@ -49,8 +49,6 @@ Mapped servers with internal Docker service names:
 * `master2` → `shard2-node1`
 
 ```
-$ Ports
-
 ### 🔌 Ports
 
 | Container | Internal Port | Host Port |
