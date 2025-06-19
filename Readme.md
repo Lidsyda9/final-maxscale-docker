@@ -102,6 +102,14 @@ sudo docker exec -it maxscale-docker_master2_1 bash
 This project uses a custom MaxScale configuration file located at:
 
 ```
+final-maxscale-docker/
+└── maxscale/
+    ├── Dockerfile
+    └── maxscale.cnf.d/
+        └── example.cnf
+```
+
+```
 maxscale/maxscale.cnf.d/example.cnf
 ```
 ✅ Important: This file is used instead of the default maxscale.cnf in the root directory.
