@@ -26,15 +26,42 @@ git clone https://github.com/Lidsyda9/final-maxscale-docker.git
 cd final-maxscale-docker
 docker-compose up -d --build
 ```
+to stop the containers:
+
+`docker-compose down`
+
  
 ## Configuration
-* Three services are launched: one containing the **master1** MariaDB database, another containing the **master2** MariaDB database, and the third containing a MaxScale instance.
-The MaxScale database username is **maxscale**, and the password is **shard**.
-You can access the sharded database via MaxScale as follows:
+The [default configuration](maxscale/maxscale.cnf) for the container is minimal
+and only enables the REST API.
 
-`mysql -h localhost -P 4000 -u maxscale -p`
- 
-Use the password ***shard*** when prompted.
+`example.cnf` (MaxScale config)
+Located in `maxscale/maxscale.cnf.d/example.cnf`, it defines:
+
+Two monitors for `master1` and `master2`
+
+Two services and listeners (on ports `4006` and `4007`)
+
+Mapped servers with internal Docker service names:
+
+* `master1` → `shard1-node1`
+
+* `master2` → `shard2-node1`
+
+```
+$ Ports
+
+### 🔌 Ports
+
+| Container | Internal Port | Host Port |
+|-----------|----------------|-----------|
+| master1   | 3306           | 3307      |
+| master2   | 3306           | 3308      |
+| maxscale  | 4006           | 4006      |
+| maxscale  | 4007           | 4007      |
+
+```
+
 
 ## Max scale Docker-Compose Setup
 To access the ***master1*** database as ***root***, use password ***root***:
