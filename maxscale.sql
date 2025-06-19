@@ -1,0 +1,3 @@
+CREATE USER 'maxscale'@'%' IDENTIFIED BY 'maxscale_password';
+GRANT ALL PRIVILEGES ON *.* TO 'maxscale'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
